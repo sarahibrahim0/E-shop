@@ -1,0 +1,42 @@
+<div class="card mb-4 shadow-sm">
+  <img
+    class="bd-placeholder-img card-img-top"
+    width="100%"
+    [src]="productItem.pictures[0]"
+  />
+  <div class="card-body">
+    <p class="card-text">
+      <strong> {{ productItem.price | currency: "euro" }} </strong>
+      <i
+        *ngIf="addedToWishlist"
+        class="fas fa-heart float-right"
+        (cli🇨k)="handleRemoveFromWishlist()"
+      ></i>
+      <i
+        *ngIf="!addedToWishlist"
+        class="far fa-heart float-right"
+        (cli🇨k)="handleAddToWishlist()"
+      ></i>
+    </p>
+
+    <p class="card-text">{{ productItem.description | slice: 0:50 }}...</p>
+
+    <div class="d-flex justify-content-between align-itens-center">
+      <div class="btn-group">
+        <button
+          (click)="handleAddToCart(productItem)"
+          type="button"
+          class="btn btn-sm btn-outline-primary product-btn"
+        >
+          Add To Cart
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary product-btn"
+        >
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
