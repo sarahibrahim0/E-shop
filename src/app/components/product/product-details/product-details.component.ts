@@ -1,9 +1,8 @@
-import { identifierName } from '@angular/compiler';
 import { Product } from './../../../models/product';
 import { ProductService } from './../../../services/product/products-service.service';
 import { Component, OnInit , Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Observable, Subject , pipe, takeUntil} from 'rxjs';
+import { Subject , takeUntil} from 'rxjs';
 
 
 
@@ -45,10 +44,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-ngOnDestroy(): void {
-  
-    this.endsub$.next()
-
+ngOnDestroy():void 
+{
+    this.endsub$.next(true)
     this.endsub$.complete()
 }
 
