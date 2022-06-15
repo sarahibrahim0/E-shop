@@ -1,23 +1,41 @@
 
+
 export class Product {
+    
+    _id: string;
+    name: string;
+    description: string;
+    richDescription: string;
+    image: string;
+    images: {}[];
+    brand: string;
+    price: number;
+    category: string;
+    countInStock: number;
+    rating: number;
+    numReviews: number;
+    isFeatured: boolean;
 
-  _id: string;
-  name : string;
-  price : number;
-  quantity : number;
-  description : string ;
-  pictures : string []
 
 
-  constructor(id='',namee='', quantity=0,description = '', price= 0, pictures=['/assets/download.png'])
-{
-this._id  = id;
-this.name = namee;
-this.description = description;
-this.price = price;
-this.pictures = pictures;
-this.quantity = quantity;
-}
+
+    constructor(_id='', name = 'default', description = '', richDescription = '', image = '', images = [{}], brand = '', price = 0, category = '', countInStock = 0, rating = 0, numReviews = 0, isFeatured = false ){
+        
+        this._id = _id;
+        this.name = name;
+        this.description = description;
+        this.richDescription = richDescription;
+        this.image = image;
+        this.images = images;
+        this.brand = brand;
+        this.price = price;
+        this.category = category;
+        this.countInStock = countInStock;
+        this.rating = rating;
+        this.numReviews = numReviews;
+        this.isFeatured = isFeatured;
+
+    }
 
 
 }

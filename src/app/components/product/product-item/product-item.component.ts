@@ -1,7 +1,5 @@
-// import { WishlistService } from './../_services/wishlist.service';
-// import { MessengerService } from '../../../_services/messenger.service';
-import { Product } from '../../../models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Product } from './../../../models/product';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-item',
@@ -11,33 +9,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   @Input()
-  productItem : Product;
+  productItem: Product
 
-  addedToWishlist : boolean = false;
+  // AddToCart(){
+  //   console.log(this.productItem)
+  //   console.log(this.productItem._id)
+  //   return this.productItem
+  // }
 
   constructor() { }
 
   ngOnInit(): void {
+    // this.AddToCart()
   }
-
-  handleAddToCart(productItem : Product){
-    // console.log(product)
-    // this.messenger.sendmsg(this.productItem)
-        // console.log(product)
-
-  }
-
-  handleAddToWishlist(){
-  // this.wishlist.addToWishlist(this.productItem._id).subscribe(()=>{
-  //   this.addedToWishlist = true;
-  // })
-  }
-
-  handleRemoveFromWishlist(){
-    // this.wishlist.removeFromWishlist(this.productItem._id).subscribe(()=>{
-    //   this.addedToWishlist = false;
-    // })
-
-}
 
 }

@@ -1,42 +1,29 @@
-<div class="card mb-4 shadow-sm">
-  <img
-    class="bd-placeholder-img card-img-top"
-    width="100%"
-    [src]="productItem.pictures[0]"
-  />
-  <div class="card-body">
-    <p class="card-text">
-      <strong> {{ productItem.price | currency: "euro" }} </strong>
-      <i
-        *ngIf="addedToWishlist"
-        class="fas fa-heart float-right"
-        (cli🇨k)="handleRemoveFromWishlist()"
-      ></i>
-      <i
-        *ngIf="!addedToWishlist"
-        class="far fa-heart float-right"
-        (cli🇨k)="handleAddToWishlist()"
-      ></i>
-    </p>
 
-    <p class="card-text">{{ productItem.description | slice: 0:50 }}...</p>
+    <div class=" flex flex-col  w-[18rem] h-[ 28.438rem] flex flex-col  border-1 mx-auto mb-9">
+        <div class=" w-full relative">
+            <img [routerLink]="'/products/'+ productItem?._id"   [src]="productItem?.image" class=" w-full h-[18.563rem] ">
+            <i class="bi bi-suit-heart absolute right-[2.7rem] top-[1.7rem]" ></i>
+            
+        </div>
+        <div class="w-full h-[9.875rem] flex flex-row justify-around">
+            <div class="flex flex-col justify-center">
+                <p class="text-[1.5rem] font-semibold"> {{productItem?.name}} </p>
+                <p class="text-[1.125rem] font-normal">{{  productItem?.price | currency : 'EGP '}} </p>
+                <!-- currency : 'EGP '}} </p> -->
 
-    <div class="d-flex justify-content-between align-itens-center">
-      <div class="btn-group">
-        <button
-          (click)="handleAddToCart(productItem)"
-          type="button"
-          class="btn btn-sm btn-outline-primary product-btn"
-        >
-          Add To Cart
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm btn-outline-secondary product-btn"
-        >
-          View Details
-        </button>
-      </div>
+            </div>
+            <div class="flex flex-col justify-center">
+                <i class="bi bi-handbag text-3xl"></i>
+            </div>
+        </div>
+
     </div>
-  </div>
-</div>
+<!-- 
+    <div *ngIf="productItem">
+        <div >
+          <img [routerLink]="'/products/' + productItem?._id" [src]="productItem.image" class="image" alt="" />
+          <h4 class="name">{{ productItem?.name }}</h4>
+          <h5 class="price">{{ productItem?.price | currency }}</h5>
+             </div>
+      </div>
+       -->

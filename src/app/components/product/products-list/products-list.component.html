@@ -1,5 +1,24 @@
-<div class="row">
-  <div class="col-md-4" *ngFor="let product of productList">
-    <app-product-item> [productItem]='product'</app-product-item>
+  <div class='w-[100%] '>
+  
+ 
+
+
+<div *ngIf="categoriesList">
+  <div *ngFor="let category of categoriesList">
+
+    <label class="container"> {{category.name}} </label>
+    <input type="checkbox" [(ngModel)]='category.checked' [id]='category._id' (ngModelChange)='categoriesFilter()'>
+    <span class="checkmark"></span>
+
+
   </div>
+</div> 
+
+<div class="grid grid-cols-4 content-center" *ngIf="productList">
+  <div  *ngFor="let product of productList">
+    <app-product-item [productItem]="product"></app-product-item>
+  </div>
+</div>
+
+
 </div>
