@@ -1,9 +1,9 @@
 import { identifierName } from '@angular/compiler';
 import { Product } from './../../../models/product';
 import { ProductService } from './../../../services/product/products-service.service';
-import { Component, OnInit , Input } from '@angular/core';
+import { Component, OnInit , Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Observable} from 'rxjs';
+import {Observable, Subject , pipe, takeUntil} from 'rxjs';
 
 
 
@@ -12,11 +12,12 @@ import {Observable} from 'rxjs';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   
   productDetails : Product
   quantity: number
+  endsub$: Subject<any> = new Subject<void>()
 
   constructor(private productService: ProductService, private actRoute : ActivatedRoute) { }
 
@@ -36,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   private _getProducts(id: string){
-    this.productService.getProductById('id').subscribe((product)=>{
+    this.productService.getProductById('id').pipe(takeUntil(this.endsub$)).subscribe((product)=>{
       this.productDetails = product;
       console.log('this is details')
 
@@ -44,7 +45,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
+ngOnDestroy(): void {
+  
+    this.endsub$.next()
 
+    this.endsub$.complete()
+}
 
 
 }
