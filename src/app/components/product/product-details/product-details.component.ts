@@ -1,8 +1,9 @@
+import { CartService } from './../../../services/cart/cart.service';
 import { Product } from './../../../models/product';
 import { ProductService } from './../../../services/product/products-service.service';
-import { Component, OnInit , Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject , takeUntil} from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 
 
@@ -13,30 +14,32 @@ import { Subject , takeUntil} from 'rxjs';
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
-  
-  productDetails : Product
+
+  productDetails: Product
   quantity: number
   endsub$: Subject<any> = new Subject<void>()
 
-  constructor(private productService: ProductService, private actRoute : ActivatedRoute) { }
+  constructor(private productService: ProductService, private cartService: CartService, private actRoute: ActivatedRoute) {
+    this.cartService.initCartLocalStorage();
+  }
 
   ngOnInit(): void {
-   
-   this.actRoute.params.subscribe((params)=>{
-  if(params['productItemid']){
-   this._getProducts(params['productItemid']);
-  console.log(params['productItemid']);
+
+    this.actRoute.params.subscribe((params) => {
+      if (params['productItemid']) {
+        this._getProducts(params['productItemid']);
+        console.log(params['productItemid']);
+
+      }
+
+
+    })
+
 
   }
 
-  
-   })
-   
-  
-  }
-
-  private _getProducts(id: string){
-    this.productService.getProductById('id').pipe(takeUntil(this.endsub$)).subscribe((product)=>{
+  private _getProducts(id: string) {
+    this.productService.getProductById('id').pipe(takeUntil(this.endsub$)).subscribe((product) => {
       this.productDetails = product;
       console.log('this is details')
 
@@ -44,11 +47,17 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-ngOnDestroy():void 
-{
+
+
+
+
+
+
+
+  ngOnDestroy(): void {
     this.endsub$.next(true)
     this.endsub$.complete()
-}
+  }
 
 
 }
