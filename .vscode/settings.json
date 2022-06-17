@@ -10,6 +10,7 @@
         "primeng",
         "productid",
         "sendmsg",
+        "Stringfy",
         "tailwindcss"
     ]
 }

@@ -18,10 +18,12 @@ export class ProductItemComponent implements OnInit {
   constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
+    this.cartService.initCartLocalStorage()
   }
 
-    addProductToCart(){
-    const cartItem : CartItem= 
+   addProductToCart()
+   {
+    const cartItem : CartItem = 
   
     {
       productId :  this.productItem._id,

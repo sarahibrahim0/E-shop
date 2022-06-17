@@ -1,29 +1,19 @@
-
-    <div class=" flex flex-col  w-[18rem] h-[ 28.438rem] flex flex-col  border-1 mx-auto mb-9">
-        <div class=" w-full relative">
-            <img [routerLink]="'/products/'+ productItem?._id"   [src]="productItem?.image" class=" w-full h-[18.563rem] ">
-            <i class="bi bi-suit-heart absolute right-[2.7rem] top-[1.7rem]" ></i>
-            
-        </div>
-        <div class="w-full h-[9.875rem] flex flex-row justify-around">
-            <div class="flex flex-col justify-center">
-                <p class="text-[1.5rem] font-semibold"> {{productItem?.name}} </p>
-                <p class="text-[1.125rem] font-normal">{{  productItem?.price | currency : 'EGP '}} </p>
-                <!-- currency : 'EGP '}} </p> -->
-
-            </div>
-            <div class="flex flex-col justify-center">
-                <i class="bi bi-handbag text-3xl" onclick="addProductToCart()"></i>
-            </div>
-        </div>
+<div class=" flex flex-col  w-[18rem] h-[ 28.438rem] flex flex-col  border-1 mx-auto mb-9">
+    <div class=" w-full relative">
+        <img [routerLink]="'/products/'+ productItem?._id" [src]="productItem?.image" class=" w-full h-[18.563rem] ">
+        <i class="bi bi-suit-heart absolute right-[2.7rem] top-[1.7rem]"></i>
 
     </div>
-<!-- 
-    <div *ngIf="productItem">
-        <div >
-          <img [routerLink]="'/products/' + productItem?._id" [src]="productItem.image" class="image" alt="" />
-          <h4 class="name">{{ productItem?.name }}</h4>
-          <h5 class="price">{{ productItem?.price | currency }}</h5>
-             </div>
-      </div>
-       -->
+    <div class="w-full h-[9.875rem] flex flex-row justify-around">
+        <div class="flex flex-col justify-center">
+            <p class="text-[1.5rem] font-semibold"> {{productItem?.name}} </p>
+            <p class="text-[1.125rem] font-normal">{{ productItem?.price | currency : 'EGP '}} </p>
+            <!-- currency : 'EGP '}} </p> -->
+
+        </div>
+        <div class="flex flex-col justify-center">
+            <i class="bi bi-handbag text-3xl" (click)="addProductToCart()"> </i>
+        </div>
+    </div>
+
+</div>
