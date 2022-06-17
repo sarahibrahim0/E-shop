@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductItemComponent } from './components/product/product-item/product-item.component';
 import { AccordionModule } from 'primeng/accordion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 
 
 
@@ -29,7 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     WishlistComponent,
     CategoriesComponent,
     ProductItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , AccordionModule],
   providers: [],
