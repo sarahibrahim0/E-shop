@@ -17,10 +17,6 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import {BadgeModule} from 'primeng/badge';
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
