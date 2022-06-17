@@ -50,5 +50,10 @@ export class CartService {
   }
 
 
+  getCartItem(){
+    const cartJson : string = localStorage.getItem('cart');
+    const cart : Cart = JSON.parse(cartJson);
+    return cart;
+  }
 
 }

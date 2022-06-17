@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
-  constructor() { }
+  cartCount =  0;
+
+  constructor( private cartService : CartService) { }
 
   ngOnInit(): void {
+    this. cartCount = this.cartService.getCartItem().items.length
   }
 
 }

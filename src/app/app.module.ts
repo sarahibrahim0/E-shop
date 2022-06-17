@@ -12,9 +12,10 @@ import { RelatedProductsComponent } from './components/cart/related-products/rel
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { FormsModule } from '@angular/forms';
 import { ProductItemComponent } from './components/product/product-item/product-item.component';
-import { AccordionModule } from 'primeng/accordion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import {BadgeModule} from 'primeng/badge';
+
 
 
 
@@ -33,7 +34,7 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
     ProductDetailsComponent,
     CartItemComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , AccordionModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
