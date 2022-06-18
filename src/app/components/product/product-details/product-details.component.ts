@@ -28,19 +28,16 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // this.id = this.actRoute.snapshot.params?.['id'];
+    this.id = this.actRoute.snapshot.params?.['productItemid'];
 
-    this.actRoute.params.subscribe((params) => {
-      if (params['productItemid']) {
-        const idParams = params['productItemid'];
-        this._getProducts(idParams);
-        console.log(idParams)
+    // this.actRoute.params.subscribe((params) => {
+    //   if (params['productItemid']) {
+    //     const idParams = params['productItemid'];
+        this._getProducts(this.id);
+        // console.log(idParams)
         console.log(this.id)
 
-
-
-      }
-    })
+  
   }
 
   private _getProducts(id: string) {
