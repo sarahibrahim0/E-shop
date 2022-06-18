@@ -8,12 +8,16 @@ import { CartService } from 'src/app/services/cart/cart.service';
 })
 export class CartItemComponent implements OnInit {
 
-  cartCount =  0;
+  cartCount: number = 0;
 
-  constructor( private cartService : CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this. cartCount = this.cartService.getCartItem().items.length
+
+    this.cartService.cart$.subscribe(cart => {
+      this.cartCount = cart?.items.length ?? 0;
+    })
+
   }
 
 }

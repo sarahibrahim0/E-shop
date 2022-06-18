@@ -1,8 +1,8 @@
 
 
 
-<p>{{productDetails?.name}}</p>
-<p>{{productDetails?.description}}</p>
+<p>{{productDetails?.name}}  name</p>
+<p>{{productDetails?.description}}   description</p>
 
 <p> {{productDetails?.price | currency  : 'EGP ' }}
     <span> {{productDetails?.price + 18 | currency  : 'EGP '}} </span>
@@ -39,6 +39,7 @@
       />
     </div>
   </div>
+  <button  (click)="addToCart()"> add to cart </button>
 
 
 <p [(ngModel)]="productDetails.rating" ></p>

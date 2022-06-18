@@ -29,10 +29,10 @@ export class ProductService {
 
   }
 
-  getProductById(productId?: string): Observable<Product> {
+  getProductById(productId: string): Observable<Product> {
     console.log('service details')
 
-    return this.http.get<Product>(`http://localhost:3000/api/v1/products?id&=${productId}`)
+    return this.http.get<Product>('http://localhost:3000/api/v1/products/' + productId)
     }
 
   }

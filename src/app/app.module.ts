@@ -15,6 +15,7 @@ import { ProductItemComponent } from './components/product/product-item/product-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import {BadgeModule} from 'primeng/badge';
+import { CartProductComponent } from './components/cart/cart-product/cart-product.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {BadgeModule} from 'primeng/badge';
     CategoriesComponent,
     ProductItemComponent,
     ProductDetailsComponent,
-    CartItemComponent
+    CartItemComponent,
+    CartProductComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule],
   providers: [],
