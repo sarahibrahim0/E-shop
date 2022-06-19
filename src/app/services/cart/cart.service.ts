@@ -7,40 +7,46 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
-  cart$ : BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.getCartItem())
+  cartFiltered: CartItem[] = []
 
-  constructor() { }
+  cart$: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.getCartItem())
+
+  constructor() {
+
+
+
+  }
 
   initCartLocalStorage() {
- 
-    const cartString : string = localStorage.getItem('cart');
-    const cart : Cart = JSON.parse(cartString);
-    
-    if(!cart){
-    const initialCart =
-    {
-      items: [],
 
+    const cartString: string = localStorage.getItem('cart');
+    const cart: Cart = JSON.parse(cartString);
+
+    if (!cart) {
+      const initialCart =
+      {
+        items: [],
+
+      }
+      const initialCartJson = JSON.stringify(initialCart)
+      localStorage.setItem('cart', initialCartJson)
     }
-    const initialCartJson = JSON.stringify(initialCart)
-    localStorage.setItem('cart', initialCartJson)
-  }
 
   }
 
 
 
-  setCartItem(cartItem: CartItem, ): Cart {
+  setCartItem(cartItem: CartItem,): Cart {
     const cartString = localStorage.getItem('cart');
     const cart: Cart = JSON.parse(cartString);
 
     const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
-    if (cartItemExist) 
-    {
+    if (cartItemExist) {
       cart.items.map((item) => {
-        if(item.productId === cartItem.productId){
+        if (item.productId === cartItem.productId) {
           item.quantity = cartItem.quantity + item.quantity
-          return item;}
+          return item;
+        }
 
         // }else{
         //   item.quantity = cartItem.quantity
@@ -48,8 +54,8 @@ export class CartService {
 
         // }
         // item.quantity = cartItem.quantity + item.quantity
-          return item;
-        
+        return item;
+
       });
     } else {
       cart.items.push(cartItem);
@@ -62,10 +68,35 @@ export class CartService {
   }
 
 
-  getCartItem(){
-    const cartJson : string = localStorage.getItem('cart');
-    const cart : Cart = JSON.parse(cartJson);
+  getCartItem() {
+    const cartJson: string = localStorage.getItem('cart');
+    const cart: Cart = JSON.parse(cartJson);
     return cart;
+  }
+
+
+
+  removeCartItem(id: string) {
+
+    const cart = this.getCartItem();
+
+    const matchedId = cart.items.findIndex((item) => {
+
+      item.productId === id
+
+    })
+
+    this.cartFiltered = cart.items.splice(matchedId, 1)
+
+    this.cartFiltered = cart.items
+
+    const cartJson = JSON.stringify(cart);
+
+    localStorage.setItem('cart', cartJson);
+
+    this.cart$.next(cart);
+
+
   }
 
 }

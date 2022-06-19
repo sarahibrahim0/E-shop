@@ -44,7 +44,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       this.actRoute.params.subscribe((params) => {
         if (params['productItem_id']) {
           this._getProducts(params['productItem_id']);
-          console.log(this.id)
 
         }
       });

@@ -1,3 +1,15 @@
-<!-- <p>{{productCart.description}}</p>
-<p>{{productCart.price}}</p>
- -->
+<div *ngIf="productCart">
+
+    <p> {{cartCount}} cartCount </p>
+
+    <div *ngFor="let product of productCart">
+
+    <p> {{product.quantity}} this is cart product quantity </p>
+    <p> {{product.product.id}} this is cart product _id</p>
+    <p>{{product.product.name}}  this is cart product description</p>
+    <p>{{product.quantity * product.product.price}}  subtotal</p>
+
+    <button (click)="deleteCartItem(product.product)"> remove item </button>
+    </div>
+
+</div>
