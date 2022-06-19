@@ -7,3 +7,9 @@ export class CartItem {
     quantity?: number
 }
 
+
+export class CartProduct {
+    product? : any;
+    quantity?: number
+}
+

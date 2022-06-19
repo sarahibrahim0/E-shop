@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsSearchComponent } from './components/product/products-search/products-search.component';
 import { ProductsListComponent } from './components/product/products-list/products-list.component';
-import { AddToCartComponent } from './components/cart/add-to-cart/add-to-cart.component';
 import { RelatedProductsComponent } from './components/cart/related-products/related-products.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +22,6 @@ import { CartProductComponent } from './components/cart/cart-product/cart-produc
     AppComponent,
     ProductsSearchComponent,
     ProductsListComponent,
-    AddToCartComponent,
     RelatedProductsComponent,
     WishlistComponent,
     CategoriesComponent,

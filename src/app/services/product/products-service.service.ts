@@ -30,8 +30,8 @@ export class ProductService {
   }
 
   getProductById(productId: string): Observable<Product> {
-    console.log('service details')
 
+    console.log('getProductById service')
     return this.http.get<Product>(`http://localhost:3000/api/v1/products/${productId}`)
     }
 

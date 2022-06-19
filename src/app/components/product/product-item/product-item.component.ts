@@ -26,7 +26,7 @@ export class ProductItemComponent implements OnInit {
     const cartItem : CartItem = 
   
     {
-      productId :  this.productItem.id,
+      productId :  this.productItem._id,
       quantity : 1
     }
   

@@ -38,7 +38,16 @@ export class CartService {
     if (cartItemExist) 
     {
       cart.items.map((item) => {
-        item.quantity = cartItem.quantity + item.quantity
+        if(item.productId === cartItem.productId){
+          item.quantity = cartItem.quantity + item.quantity
+          return item;}
+
+        // }else{
+        //   item.quantity = cartItem.quantity
+        //   return item;
+
+        // }
+        // item.quantity = cartItem.quantity + item.quantity
           return item;
         
       });

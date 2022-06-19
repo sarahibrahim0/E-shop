@@ -2,7 +2,7 @@
 
 export class Product {
     
-    id: string;
+    _id: string;
     name: string;
     description: string;
     richDescription: string;
@@ -19,9 +19,9 @@ export class Product {
 
 
 
-    constructor(id='', name = 'default', description = '', richDescription = '', image = '', images = [{}], brand = '', price = 0, category = '', countInStock = 0, rating = 0, numReviews = 0, isFeatured = false ){
+    constructor(_id='', name = 'default', description = '', richDescription = '', image = '', images = [{}], brand = '', price = 0, category = '', countInStock = 0, rating = 0, numReviews = 0, isFeatured = false ){
         
-        this.id = id;
+        this._id = _id;
         this.name = name;
         this.description = description;
         this.richDescription = richDescription;

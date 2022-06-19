@@ -4,7 +4,7 @@ import { Product } from './../../../models/product';
 import { ProductService } from './../../../services/product/products-service.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, BehaviorSubject } from 'rxjs';
 
 
 
@@ -16,10 +16,10 @@ import { Subject, takeUntil } from 'rxjs';
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
 
-  productDetails : Product
+  productDetails: Product
   quantity = 1;
   endsub$: Subject<any> = new Subject<void>()
-  id : string
+  id: string 
 
 
   constructor(private productService: ProductService, private cartService: CartService, private actRoute: ActivatedRoute) {
@@ -28,23 +28,45 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.id = this.actRoute.snapshot.params?.['productItemid'];
+    // this.id = this.actRoute.snapshot.params?.['productItem_id'];
+    // // this.idB.next(this.id);
+    // // this.actRoute.params.subscribe((params) => {
+    // //   if (params['productItemid']) {
+    // //     const idParams = params['productItemid'];
+    // // this.idB.subscribe(id=>{
+    // //   this.id = id
+    // // })
+    // this._getProducts(this.id);
+    // console.log(idParams)
 
-    // this.actRoute.params.subscribe((params) => {
-    //   if (params['productItemid']) {
-    //     const idParams = params['productItemid'];
-        this._getProducts(this.id);
-        // console.log(idParams)
-        console.log(this.id)
 
-  
+    {
+      this.actRoute.params.subscribe((params) => {
+        if (params['productItem_id']) {
+          this._getProducts(params['productItem_id']);
+          console.log(this.id)
+
+        }
+      });
+    }
+
   }
 
+
+  ngOnDestroy(): void {
+    this.endsub$.next(true)
+    this.endsub$.complete()
+  }
+
+
+
   private _getProducts(id: string) {
-    this.productService.getProductById('id').subscribe((product) => {
+
+    this.productService.getProductById(id).pipe(takeUntil(this.endsub$)).subscribe((product) => {
       this.productDetails = product;
-      console.log(product + '_getproduct()')  //objects
-      console.log(this.productDetails)  //array of products
+      // this.idB.next(this.productDetails._id)
+      console.log(product + '_getproduct()')  
+      console.log(this.productDetails._id) 
 
 
     })
@@ -55,7 +77,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   addToCart() {
     const cartProduct: CartItem =
     {
-      productId: this.productDetails.id, //id is undefined 
+      productId: this.productDetails._id, //id is undefined 
       quantity: this.quantity
     }
 
@@ -65,10 +87,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
 
 
-  ngOnDestroy(): void {
-    this.endsub$.next(true)
-    this.endsub$.complete()
-  }
 
 
 }

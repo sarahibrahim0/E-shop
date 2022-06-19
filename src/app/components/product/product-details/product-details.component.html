@@ -1,11 +1,10 @@
 
 
 
-<p>{{productDetails?.name}}  name</p>
-<p>{{productDetails?.description}}   description</p>
+<p>{{productDetails?.name}} </p>
+<p>{{productDetails?.description}}  </p>
 
 <p> {{productDetails?.price | currency  : 'EGP ' }}
-    <span> {{productDetails?.price + 18 | currency  : 'EGP '}} </span>
 </p>
 <p [(ngModel)]="quantity"></p>
 
@@ -43,5 +42,5 @@
 
 
 <p [(ngModel)]="productDetails.rating" ></p>
-<p *ngIf="productDetails?.countInStock !== 0"> Availability : in Stock</p>
-<p *ngIf="productDetails?.countInStock == 0"> Availability : out of Stock</p>
+<p> {{productDetails?.countInStock}} availability </p>
+<!-- <p *ngIf="productDetails?.countInStock == 0"> Availability : out of Stock</p> -->
