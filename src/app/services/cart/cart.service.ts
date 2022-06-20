@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
-  cartFiltered: CartItem[] = []
 
   cart$: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.getCartItem())
 
@@ -80,22 +79,14 @@ export class CartService {
 
     const cart = this.getCartItem();
 
-    const matchedId = cart.items.findIndex((item) => {
-
-      item.productId === id
-
-    })
-
-    this.cartFiltered = cart.items.splice(matchedId, 1)
-
-    this.cartFiltered = cart.items
-
-    const cartJson = JSON.stringify(cart);
-
-    localStorage.setItem('cart', cartJson);
+    const newCart = cart.items?.filter((item)=>{ return item.productId !== id})
+   
+    cart.items = newCart
+   
+    const cartString = JSON.stringify(cart);
+    localStorage.setItem('cart', cartString);
 
     this.cart$.next(cart);
-
 
   }
 

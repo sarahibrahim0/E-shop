@@ -76,7 +76,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   addToCart() {
     const cartProduct: CartItem =
     {
-      productId: this.productDetails._id, //id is undefined 
+      productId: this.productDetails._id, 
       quantity: this.quantity
     }
 

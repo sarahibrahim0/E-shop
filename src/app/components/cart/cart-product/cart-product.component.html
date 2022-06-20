@@ -1,15 +1,57 @@
 <div *ngIf="productCart">
 
     <p> {{cartCount}} cartCount </p>
+    <p>{{totalPrice}}  order summary </p>
+
 
     <div *ngFor="let product of productCart">
-
-    <p> {{product.quantity}} this is cart product quantity </p>
+    <!-- <p> {{product.quantity}} this is cart product quantity </p> -->
     <p> {{product.product.id}} this is cart product _id</p>
     <p>{{product.product.name}}  this is cart product description</p>
+
     <p>{{product.quantity * product.product.price}}  subtotal</p>
 
-    <button (click)="deleteCartItem(product.product)"> remove item </button>
+
+
+    <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <label for="quantity" class="form-label inline-block mb-2 text-gray-700"
+            >Quantity</label>
+          
+          <input
+
+            [(ngModel)]="product.quantity"
+            (input)="updateCartQuantity($event, product)"
+            type="number"
+            class="
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+            "
+            id="quantity"
+            placeholder="Number input"
+          />
+        </div>
+      </div>
+
+
+    <button (click)="deleteCartItem(product)"> remove item </button>
+   
+    <p>------------------------------------------------------------------</p>
+        
+     
     </div>
 
 </div>
