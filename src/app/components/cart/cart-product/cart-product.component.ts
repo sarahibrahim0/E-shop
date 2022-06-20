@@ -95,7 +95,7 @@ export class CartProductComponent implements OnInit, OnDestroy {
    this.cartService.setCartItem({
     productId: product.product.id,
     quantity: $event.target.value
-   })
+   }, true)
   }
 
 

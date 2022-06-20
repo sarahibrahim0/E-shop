@@ -35,15 +35,27 @@ export class CartService {
 
 
 
-  setCartItem(cartItem: CartItem,): Cart {
+  setCartItem(cartItem: CartItem, updateCartItem? : boolean): Cart {
     const cartString = localStorage.getItem('cart');
     const cart: Cart = JSON.parse(cartString);
 
     const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
     if (cartItemExist) {
+
+
       cart.items.map((item) => {
         if (item.productId === cartItem.productId) {
-          item.quantity = cartItem.quantity + item.quantity
+
+          if (updateCartItem) {
+            
+            item.quantity = cartItem.quantity
+      
+          }else{
+            
+            item.quantity = cartItem.quantity + item.quantity
+
+          }
+
           return item;
         }
 
