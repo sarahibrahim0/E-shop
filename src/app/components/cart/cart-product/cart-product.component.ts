@@ -91,7 +91,11 @@ export class CartProductComponent implements OnInit, OnDestroy {
   }
 
   updateCartQuantity($event, product : CartProduct) {
-
+    console.log($event.target.value)
+   this.cartService.setCartItem({
+    productId: product.product.id,
+    quantity: $event.target.value
+   })
   }
 
 
