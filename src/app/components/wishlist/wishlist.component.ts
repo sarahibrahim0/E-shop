@@ -1,3 +1,5 @@
+import { Product } from './../../models/product';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { takeUntil, Subject } from 'rxjs';
 import { CartProduct } from './../../models/cart';
 import { CartItem } from 'src/app/models/cart';
@@ -16,9 +18,11 @@ wishlistProducts : CartProduct [] = []
 endSub$: Subject<any> = new Subject<void>()
 
 
-  constructor(private productService: ProductService, private wishlistService : WishlistService ) {}
+  constructor(private productService: ProductService, private wishlistService : WishlistService, private cartService: CartService ) {}
 
   ngOnInit(): void {
+
+    this.getWishlist()
   }
 
 
@@ -48,4 +52,24 @@ endSub$: Subject<any> = new Subject<void>()
 
   }
 
+
+    addToCart() {
+    const cartProduct: CartItem =
+    {
+      // productId: this.productDetails._id, 
+      // quantity: this.quantity
+    }
+
+    this.cartService.setCartItem(cartProduct)
+  }
+
+
+  deleteFromWishlist(Product : CartProduct){
+
+  const item : CartItem = {
+   productId : Product.product.id,
+   quantity : Product.quantity
+  }
+    this.wishlistService.addProductToWishlist(item, true);
+  }
 }
