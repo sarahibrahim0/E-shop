@@ -1,7 +1,7 @@
 <div class=" flex flex-col  w-[18rem] h-[ 28.438rem] flex flex-col  border-1 mx-auto mb-9">
     <div class=" w-full relative">
         <img [routerLink]="'/products/'+ productItem?._id" [src]="productItem?.image" class=" w-full h-[18.563rem] ">
-        <i class="bi bi-suit-heart absolute right-[2.7rem] top-[1.7rem]"></i>
+        <i class="bi bi-suit-heart text-[5rem] absolute right-[2.7rem] top-[1.7rem]" (click)="addToWishlist()"></i>
 
     </div>
     <div class="w-full h-[9.875rem] flex flex-row justify-around">

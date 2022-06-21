@@ -42,7 +42,6 @@ export class CartService {
     const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
     if (cartItemExist) {
 
-
       cart.items.map((item) => {
         if (item.productId === cartItem.productId) {
 

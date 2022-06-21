@@ -1,3 +1,5 @@
+import { WishlistComponent } from './../../wishlist/wishlist.component';
+import { WishlistService } from './../../../services/wishlist/wishlist.service';
 import { Product } from './../../../models/product';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -14,11 +16,14 @@ export class ProductItemComponent implements OnInit {
   @Input()
   productItem: Product
 
+  updateCart: boolean = false
 
-  constructor(private cartService : CartService) { }
+
+  constructor(private cartService : CartService , private wishlistService : WishlistService) { }
 
   ngOnInit(): void {
-    this.cartService.initCartLocalStorage()
+    this.cartService.initCartLocalStorage();
+    this.wishlistService.initWishlistLocalStorage();
   }
 
    addProductToCart()
@@ -33,6 +38,17 @@ export class ProductItemComponent implements OnInit {
     return this.cartService.setCartItem(cartItem)
   }
   
+  addToWishlist(){
+
+    const cartItem : CartItem = 
+  
+    {
+      productId :  this.productItem._id,
+      quantity : 1
+    }
+  
+    return this.wishlistService.addProductToWishlist(cartItem , this.updateCart );
+  }
   
   
 
