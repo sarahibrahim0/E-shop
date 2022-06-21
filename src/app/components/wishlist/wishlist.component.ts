@@ -53,11 +53,11 @@ endSub$: Subject<any> = new Subject<void>()
   }
 
 
-    addToCart() {
+    addToCart(product) {
     const cartProduct: CartItem =
     {
-      // productId: this.productDetails._id, 
-      // quantity: this.quantity
+      productId : product.product.id,
+      quantity : product.quantity
     }
 
     this.cartService.setCartItem(cartProduct)
