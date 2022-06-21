@@ -15,6 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import {BadgeModule} from 'primeng/badge';
 import { CartProductComponent } from './components/cart/cart-product/cart-product.component';
+import {RatingModule} from 'primeng/rating';
+
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { CartProductComponent } from './components/cart/cart-product/cart-produc
     CartItemComponent,
     CartProductComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule, RatingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -4,8 +4,12 @@
     <p>{{totalPrice}}  order summary </p>
 
 
+
     <div *ngFor="let product of productCart">
     <!-- <p> {{product.quantity}} this is cart product quantity </p> -->
+
+    <p-rating [(ngModel)]="product.product.rating" [cancel]="false"></p-rating>
+
     <p> {{product.product.id}} this is cart product _id</p>
     <p>{{product.quantity}}  quantity</p>
 
