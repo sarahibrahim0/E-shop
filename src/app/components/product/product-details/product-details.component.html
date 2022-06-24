@@ -1,27 +1,55 @@
 
 
 
-<p>{{productDetails?.name}} </p>
+
+<div class="w-[100%] h-[7.688rem] bg-[#E3CAA5] bg-opacity-[8%]  ">
+
+  <nav class="relative w-auto flex flex-wrap items-center text-center justify-between py-3 focus:text-gray-700 mx-[10.344rem] ">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <nav class="rounded-md w-auto" aria-label="breadcrumb">
+        <ol class="list-reset flex items-center gap-[.5rem]">
+          <li><a href="#" class=" hover:text-gray-600">Home</a></li>
+          <li><span class=" mx-2"><img src="../../../../assets/Ellipse 9.svg"></span></li>
+          <li><a href="#" class="hover:text-gray-600">Library</a></li>
+          <li><span class="mx-2"><img src="../../../../assets/Ellipse 9.svg"></span></li>
+          <li><a href="#" class="hover:text-gray-600">Data</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+  
+    
+</div>
+
+
+<div class="w-[80.188rem] flex flex-row justify-between">
+<div class=" w-[35rem] h-[37.126rem]">
+  <img [src]="productDetails.image" class="">
+</div>
+
+<div class="details w-[31.875rem] h-[40.438rem] flex flex-col  ">
+
+  <p>{{productDetails?.name}} </p>
 <p>{{productDetails?.description}}  </p>
 
-<p> {{productDetails?.price | currency  : 'EGP ' }}
-</p>
-<p [(ngModel)]="quantity"></p>
+<div class="flex flex-row justify-between">
+  <p> {{productDetails?.price | currency  : 'EGP ' }}</p>
+<p-rating [(ngModel)]=" productDetails.rating" on [cancel]="false"></p-rating>
+</div>
 
-<div class="flex justify-center">
-    <div class="mb-3 xl:w-96">
-      <label for="quantity" class="form-label inline-block mb-2 text-gray-700"
-        >Quantity</label>
-      
+
+
+<!-- <p [(ngModel)]="quantity"></p> -->
+
+<!-- <div class="flex flex-row justify-between"> -->
+    <div class="flex flex-row justify-between w-auto pr-16 xl:w-96">
       <input
         [(ngModel)]="quantity"
         type="number"
         class="
           form-control
           block
-          w-full
-          px-3
-          py-1.5
+          w-[3.9rem]
           text-base
           font-normal
           text-gray-700
@@ -31,16 +59,54 @@
           transition
           ease-in-out
           m-0
-          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-        "
+          focus:text-gray-700 focus:bg-white focus:border-0 focus:outline-none"
         id="quantity"
-        placeholder="Number input"
-      />
-    </div>
+        placeholder="Number input"/>
+        <label for="quantity" class="form-label text-gray-700" >
+          Quantity
+        </label>
+    <!-- </div> -->
+
   </div>
-  <button  (click)="addToCart()"> add to cart </button>
+
+  <!-- <button  (click)="addToCart()"> add to cart </button> -->
+
+  <i class="bi bi-suit-heart text-2xl  hover:cursor-pointer" (click)="addToWishlist()"></i>
+
+
+  <button class="w-[7.313rm] h-[1.5rem]">Add To Cart</button>
+  <i class="bi bi-handbag text-2xl hover:cursor-pointer" (click)="addToCart()"> </i>
+
 
 
 <p [(ngModel)]="productDetails.rating" ></p>
-<p> {{productDetails?.countInStock}} availability </p>
+
+<div *ngIf="productDetails?.countInStock  !== 0 " class="flex flex-row justify-between">
+  <p> availability </p>
+<p class="pr-16">In Stock</p>
+</div>
+
+<div *ngIf="productDetails?.countInStock  == 0 " class="flex flex-row justify-between">
+  <p > availability </p>
+<p class="pr-16">In Stock</p>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <p *ngIf="productDetails?.countInStock == 0"> Availability : out of Stock</p> -->

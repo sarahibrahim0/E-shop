@@ -1,6 +1,7 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
+    
   colors:{
     
   },
@@ -8,8 +9,8 @@ module.exports = {
   },
   fontSize:{
   },
-  spacing:{
-
+  gap:{
+    'first':'2.5rem'
   }
 
   },

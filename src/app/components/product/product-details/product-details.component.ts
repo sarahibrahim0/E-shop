@@ -1,3 +1,4 @@
+import { WishlistService } from './../../../services/wishlist/wishlist.service';
 import { CartItem } from 'src/app/models/cart';
 import { CartService } from './../../../services/cart/cart.service';
 import { Product } from './../../../models/product';
@@ -20,9 +21,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   quantity = 1;
   endsub$: Subject<any> = new Subject<void>()
   id: string 
+  updateCart : boolean
 
 
-  constructor(private productService: ProductService, private cartService: CartService, private actRoute: ActivatedRoute) {
+  constructor(private productService: ProductService, private cartService: CartService,private wishlistService : WishlistService, private actRoute: ActivatedRoute) {
     this.cartService.initCartLocalStorage();
   }
 
@@ -86,6 +88,19 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
 
 
+  
+  addToWishlist(){
 
+    const cartItem : CartItem = 
+  
+    {
+      productId :  this.productDetails._id,
+      quantity : 1
+    }
+  
+    return this.wishlistService.addProductToWishlist(cartItem , this.updateCart );
+  }
+  
+  
 
 }
