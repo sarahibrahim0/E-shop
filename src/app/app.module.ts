@@ -16,6 +16,9 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import {BadgeModule} from 'primeng/badge';
 import { CartProductComponent } from './components/cart/cart-product/cart-product.component';
 import {RatingModule} from 'primeng/rating';
+import { NavbarComponent } from './components/nav/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer/footer.component';
+import { NavbarLogoComponent } from './components/nav/navbar-logo/navbar-logo.component';
 
 
 
@@ -30,7 +33,10 @@ import {RatingModule} from 'primeng/rating';
     ProductItemComponent,
     ProductDetailsComponent,
     CartItemComponent,
-    CartProductComponent
+    CartProductComponent,
+    NavbarComponent,
+    FooterComponent,
+    NavbarLogoComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule, RatingModule],
   providers: [],
