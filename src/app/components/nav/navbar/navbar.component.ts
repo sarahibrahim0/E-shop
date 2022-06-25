@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/services/cart/cart.service';
 import { Category } from './../../../models/category';
 import { Product } from './../../../models/product';
 import { CategoriesService } from './../../../services/categories/categories.service';
@@ -16,17 +17,20 @@ CategoryId: string
   productList: Product[] = [];
   categoriesList: Category[] = [];
   categoryProduct: Product[] = []
+  // cartCount: number = 0;
+
 
   error: any = '';
 
 
 
-  constructor(private productService: ProductService, private categoriesService: CategoriesService) { }
+  constructor(private productService: ProductService, private categoriesService: CategoriesService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loadProduct();
     this.loadCategories();
-    // this.categoriesFilter();
+
+
 
   }
 
@@ -81,5 +85,9 @@ CategoryId: string
 
 
   }
+
+
+
+
 
 }
