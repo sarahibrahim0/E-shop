@@ -19,6 +19,7 @@ import {RatingModule} from 'primeng/rating';
 import { NavbarComponent } from './components/nav/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
 import { NavbarLogoComponent } from './components/nav/navbar-logo/navbar-logo.component';
+import { HomeComponent } from './components/home/home/home.component';
 
 
 
@@ -36,7 +37,8 @@ import { NavbarLogoComponent } from './components/nav/navbar-logo/navbar-logo.co
     CartProductComponent,
     NavbarComponent,
     FooterComponent,
-    NavbarLogoComponent
+    NavbarLogoComponent,
+    HomeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule, RatingModule],
   providers: [],

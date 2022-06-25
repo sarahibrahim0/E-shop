@@ -20,6 +20,8 @@ export class ProductsListComponent implements OnInit {
   categoryProduct: Product[] = []
 
   error: any = '';
+  CategoryId: string
+
 
 
   constructor(private productService: ProductService, private categoriesService: CategoriesService) { }
@@ -69,6 +71,15 @@ export class ProductsListComponent implements OnInit {
       .map(category => category._id)
 
     this.loadProduct(selectedCategories)
+
+
+  }
+
+  categoryFilter(id : string) {
+
+    this.CategoryId = id
+
+    this.loadCategoryProducts(this.CategoryId)
 
 
   }
