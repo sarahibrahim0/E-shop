@@ -10,6 +10,9 @@ export class WishlistService {
   constructor() { }
 
   wishlist$: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.getWishlist())
+
+  updated : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+
   endSub$: Subject<any> = new Subject<void>()
 
 
@@ -33,6 +36,7 @@ export class WishlistService {
 
 
   addProductToWishlist(cartItem: CartItem, updateCartItem? : boolean): Cart {
+    
     const wishlistString = localStorage.getItem('wishlist');
     const wishlist: Cart = JSON.parse(wishlistString);
 
@@ -43,9 +47,9 @@ export class WishlistService {
       wishlist.items.map((item) => {
         
         if (item.productId === cartItem.productId) {
-
+         
           updateCartItem = false
-
+       
           const newWishlist = wishlist.items?.filter((item)=>
           { 
             
@@ -62,11 +66,13 @@ export class WishlistService {
 
       updateCartItem = true;
       wishlist.items.push(cartItem);
+
     }
 
     const wishlistJson = JSON.stringify(wishlist);
     localStorage.setItem('wishlist', wishlistJson);
     this.wishlist$.next(wishlist);
+    this.updated.next(updateCartItem)
     return wishlist;
   }
 
@@ -81,4 +87,8 @@ export class WishlistService {
   
   }
 
+
+
+
+  
 }

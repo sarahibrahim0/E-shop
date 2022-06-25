@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
-  @Input() id: ''
+  @Input() id: string
 
 
   productList: Product[] = [];

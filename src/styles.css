@@ -14,6 +14,17 @@
 @tailwind utilities;
 
 
+
+
+@layer components {
+
+
+.listed{ @apply hidden}
+
+
+}
+
+
 .p-rating .p-rating-icon.pi-star-fill {
     color: #F66B0E !important;
 }

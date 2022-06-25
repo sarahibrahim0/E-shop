@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   quantity = 1;
   endsub$: Subject<any> = new Subject<void>()
   id: string 
-  updateCart : boolean
+  updateCart : boolean = false
 
 
   CategoryId: string
@@ -96,6 +96,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   
   addToWishlist(){
 
+    if(this.updateCart){
+      this.updateCart = false
+    }else
+    {this.updateCart = true}
+
+    
     const cartItem : CartItem = 
   
     {
