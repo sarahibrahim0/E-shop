@@ -1,3 +1,5 @@
+import { CategoriesService } from './../../../services/categories/categories.service';
+import { Category } from './../../../models/category';
 import { WishlistService } from './../../../services/wishlist/wishlist.service';
 import { CartItem } from 'src/app/models/cart';
 import { CartService } from './../../../services/cart/cart.service';
@@ -24,22 +26,25 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   updateCart : boolean
 
 
-  constructor(private productService: ProductService, private cartService: CartService,private wishlistService : WishlistService, private actRoute: ActivatedRoute) {
+  CategoryId: string
+  productList: Product[] = [];
+  categoriesList: Category[] = [];
+  categoryProduct: Product[] = []
+  // cartCount: number = 0;
+
+
+  error: any = '';
+
+  constructor(private productService: ProductService, private cartService: CartService,private categoriesService:CategoriesService
+    ,private wishlistService : WishlistService, private actRoute: ActivatedRoute) {
     this.cartService.initCartLocalStorage();
   }
 
   ngOnInit(): void {
 
-    // this.id = this.actRoute.snapshot.params?.['productItem_id'];
-    // // this.idB.next(this.id);
-    // // this.actRoute.params.subscribe((params) => {
-    // //   if (params['productItemid']) {
-    // //     const idParams = params['productItemid'];
-    // // this.idB.subscribe(id=>{
-    // //   this.id = id
-    // // })
-    // this._getProducts(this.id);
-    // console.log(idParams)
+    this.loadProduct();
+    this.loadCategories();
+
 
 
     {
@@ -102,5 +107,59 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
   
   
+
+
+
+  private loadProduct(selectedCategories?: string[]) {
+
+    console.log('this is selected ' + selectedCategories)
+    this.productService.getproducts(selectedCategories).subscribe((resProducts) => {
+      this.productList = resProducts;
+      console.log(this.productList +'all');
+
+    });
+  }
+
+
+  private loadCategoryProducts(CategoryId?: string) {
+
+    // console.log('this is selected ' +CategoryId)
+    this.productService.getSingleCategoryproducts(CategoryId).subscribe((resProducts) => {
+      this.productList = resProducts;
+      console.log(this.productList + 'hello');
+
+    });
+  }
+
+
+  private loadCategories() {
+    this.categoriesService.getCategories().subscribe((resCategories) => {
+      this.categoriesList = resCategories;
+      // console.log(this.categoriesList);
+
+    });
+  }
+
+
+
+  categoriesFilter() {
+    const selectedCategories = this.categoriesList
+      .filter(category => category.checked)
+      .map(category => category._id)
+
+    this.loadProduct(selectedCategories)
+  }
+
+
+  categoryFilter(id : string) {
+
+    this.CategoryId = id
+
+    this.loadCategoryProducts(this.CategoryId)
+
+
+  }
+
+
 
 }

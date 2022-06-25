@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home/home.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartProductComponent } from './components/cart/cart-product/cart-product.component';
 import { ProductsListComponent } from './components/product/products-list/products-list.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'productslist', component:ProductsListComponent},
   {path:'Wishlist', component:WishlistComponent},
 
+  {path:'home', component:HomeComponent},
 
   {path:'Cart', component:CartProductComponent},
 
