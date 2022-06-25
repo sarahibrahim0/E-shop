@@ -42,6 +42,17 @@ export class ProductsListComponent implements OnInit {
 
     });
   }
+
+  private loadCategoryProducts(CategoryId?: string) {
+
+    // console.log('this is selected ' +CategoryId)
+    this.productService.getSingleCategoryproducts(CategoryId).subscribe((resProducts) => {
+      this.productList = resProducts;
+      console.log(this.productList + 'hello');
+
+    });
+  }
+
   private loadCategories() {
     this.categoriesService.getCategories().subscribe((resCategories) => {
       this.categoriesList = resCategories;
