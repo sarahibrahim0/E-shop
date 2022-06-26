@@ -1,3 +1,4 @@
+import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 import { Category } from 'src/app/models/category';
 import { CartItem } from 'src/app/models/cart';
 import { CartProduct } from './../../../models/cart';
@@ -21,7 +22,11 @@ export class CartProductComponent implements OnInit, OnDestroy {
   endSub$: Subject<any> = new Subject<void>()
 
   totalPrice: number
+  productDetails: Product
 
+  quantity = 1;
+
+  emptyCart : number
 
   CategoryId: string
 
@@ -35,7 +40,7 @@ export class CartProductComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private cartService: CartService, private productService: ProductService,private categoriesService: CategoriesService, private router: Router) { }
+  constructor(private cartService: CartService, private productService: ProductService,private wishlistService: WishlistService,private categoriesService: CategoriesService, private router: Router) { }
   ngOnInit(): void {
 
 
@@ -78,6 +83,22 @@ export class CartProductComponent implements OnInit, OnDestroy {
     })
 
   }
+
+
+
+  
+  
+  addToCart() {
+    const cartProduct: CartItem =
+    {
+      productId: this.productDetails._id, 
+      quantity: this.quantity
+    }
+
+    this.cartService.setCartItem(cartProduct)
+
+  }
+
 
 
   deleteCartItem(CartItem: CartProduct) {
@@ -175,6 +196,33 @@ export class CartProductComponent implements OnInit, OnDestroy {
 
 
   }
+
+
+
+    
+  updateCart : boolean = false
+
+
+addToWishlist(){
+
+    if(this.updateCart){
+      this.updateCart = false
+    }else
+    {this.updateCart = true}
+
+    
+    const cartItem : CartItem = 
+  
+    {
+      productId :  this.productDetails._id,
+      quantity : 1
+    }
+  
+    return this.wishlistService.addProductToWishlist(cartItem , this.updateCart );
+  }
+  
+
+
 
 
 
