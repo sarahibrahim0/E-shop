@@ -25,6 +25,8 @@
 }
 
 
+
+
 .p-rating .p-rating-icon.pi-star-fill {
     color: #F66B0E !important;
 }
@@ -35,6 +37,12 @@
 
 .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon{
     color: #F66B0E;
+}
+
+
+
+.ngx-pagination .current{
+background-color : #F66B0E !important
 }
 
 

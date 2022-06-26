@@ -43,17 +43,12 @@ export class CartProductComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService, private productService: ProductService,private wishlistService: WishlistService,private categoriesService: CategoriesService, private router: Router) { }
   ngOnInit(): void {
 
-
-
     this._getCartDetails()
     this.getOrderSummary()
     console.log(this.productCart)
 
     this.loadProduct();
     this.loadCategories();
-
-
-
 
   }
 

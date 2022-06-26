@@ -20,6 +20,8 @@ import { NavbarComponent } from './components/nav/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
 import { NavbarLogoComponent } from './components/nav/navbar-logo/navbar-logo.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -40,7 +42,7 @@ import { HomeComponent } from './components/home/home/home.component';
     NavbarLogoComponent,
     HomeComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule , BadgeModule, RatingModule],
+  imports: [BrowserModule, AppRoutingModule,NgxPaginationModule, HttpClientModule,FormsModule, BrowserAnimationsModule , BadgeModule, RatingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -3,7 +3,7 @@ import { ProductService } from './../../../services/product/products-service.ser
 import { Product } from '../../../models/product';
 import { Category } from '../../../models/category';
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -14,6 +14,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductsListComponent implements OnInit {
   @Input() id: string
 
+  p : number = 1
+
 
   productList: Product[] = [];
   categoriesList: Category[] = [];
@@ -22,7 +24,10 @@ export class ProductsListComponent implements OnInit {
   error: any = '';
   CategoryId: string
 
+  enteredSearchValue : string = ''
 
+  @Output()
+  searchTextChanged : EventEmitter<string> = new EventEmitter<string>()
 
   constructor(private productService: ProductService, private categoriesService: CategoriesService) { }
 
@@ -34,6 +39,11 @@ export class ProductsListComponent implements OnInit {
   }
 
 
+
+
+  onSearch(){
+ this.searchTextChanged.emit(this.enteredSearchValue)
+  }
 
   private loadProduct(selectedCategories?: string[]) {
 

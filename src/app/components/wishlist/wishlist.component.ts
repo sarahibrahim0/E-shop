@@ -24,7 +24,9 @@ export class WishlistComponent implements OnInit {
   productList: Product[] = [];
   categoriesList: Category[] = [];
   categoryProduct: Product[] = []
-  // cartCount: number = 0;
+  Count: number = 0;
+  updateCart: boolean = false
+
 
 
   error: any = '';
@@ -48,6 +50,7 @@ export class WishlistComponent implements OnInit {
     this.wishlistService.wishlist$.pipe(takeUntil(this.endSub$)).subscribe((responseCart) => {
 
       this.wishlistProducts = [];
+      this.Count = responseCart?.items.length ?? 0;
 
       responseCart.items.forEach((wishlistItem) => {
         this.productService.getProductById(wishlistItem.productId).subscribe((productItem) => {
@@ -141,13 +144,32 @@ export class WishlistComponent implements OnInit {
 
     this.loadCategoryProducts(this.CategoryId)
 
+  }
+  
+
+  addToWishlist(product : CartProduct){
+
+    if(this.updateCart){
+      this.updateCart = false
+    }else
+    {this.updateCart = true}
+
+
+    // this.addUpdateStatus()
+    const cartItem : CartItem = 
+  
+    {
+      productId : product.product.id,
+      quantity : 1
+    }
+    return this.wishlistService.addProductToWishlist(cartItem , this.updateCart );
+  }
+  
+
+
 
   }
 
 
 
 
-
-
-
-}

@@ -56,27 +56,32 @@
 </nav>
 
 
+<div class='w-[100%] flex flex-col items-center'>
 
-<div *ngIf="wishlistProducts">
-
-    <div *ngFor="let product of  wishlistProducts">
-
-        <p> -------------------------- </p>
-
-        <p>{{product.product.name}}</p>
-        <p> --------- </p>
-        <button (click)="getWishlist()">wishlist</button>
-        <p> -------- </p>
-
-        <button (click)="addToCart(product)"> add to cart</button>
+    <div *ngIf="Count === 0" class="w-full h-full my-[10.344rem] ">
+        <div class=" h-auto w-auto flex items-center justify-center">
+          <p class="text-[3rem]">Wishlist Is Empty !</p>
+        </div>
+      </div>
 
 
-        <p> ------- </p>
+    <div *ngIf="Count > 0" class="grid gap-x-first grid-cols-4">
 
-        <button (click)="deleteFromWishlist(product)">delete</button>
+        <div *ngFor="let product of  wishlistProducts">
 
-        <p> -------------------------- </p>
+
+
+            <app-product-item [productItem]="product.product"></app-product-item>
+
+
+
+
+
+
+
+        </div>
 
     </div>
+
 
 </div>

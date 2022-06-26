@@ -79,11 +79,11 @@
     
     
       <div class="flex flex-row justify-between w-auto font-medium  ">
-        <p>Shopping Cart</p>
-        <p>Price</p>
+        <p class="border-b-2">Shopping Cart</p>
+        <p class="border-b-2">Price</p>
       </div>
     
-  <hr class="border-b-[.01rem] w-[51rem]">
+  <!-- <hr class="border-b-[.01rem] w-[51rem]"> -->
     
       <div *ngFor="let product of productCart" class="w-auto my-[5rem] "> 
          
@@ -104,11 +104,14 @@
               Quantity
             </p>
     
-            <input [(ngModel)]="product.quantity" type="number" class="
+            <input [(ngModel)]="product.quantity"   
+            (input)="updateCartQuantity($event, product)"
+
+             type="number" class="
               ring-0
               form-control
               block
-              w-[3.9rem]
+              w-[5rem]
               text-base
               font-normal
               text-gray-700
@@ -145,13 +148,12 @@
             <!-- order -->
   
             <div class=" flex flex-col w-[19.469rem] h-full  items-center p-5 justify-start border-2 ">
-              <p class="font-semibold">Order Summary</p>
-              <hr class="border-b-[.01rem] w-[7.3rem]">
+              <p class="font-semibold border-b-2">Order Summary</p>
 
-              <p class="p-2 font-bold"> {{totalPrice | currency : 'EGP'}}
+              <p class="p-2 font-bold  py-4"> {{ totalPrice| currency : 'EGP'}}
             </p>
 
-              <button class="w-[6rem] h-[2rem] text-white  bg-[#F66B0E] font-bold focus:outline-none">Checkout!</button>
+              <button class="w-[6rem] h-[2rem] text-white  bg-[#F66B0E] font-bold focus:outline-none ">Checkout!</button>
 
              </div>
   
@@ -164,11 +166,11 @@
 
 
 
-<hr class="border-2 border-opacity-40 border-[#C4C4C4] m-auto w-[80.375rem] py-4 ">
+<hr *ngIf="cartCount > 0" class="border-2 border-opacity-40 border-[#C4C4C4] m-auto w-[80.375rem] py-4 ">
 
 
 
-<div class="m-auto  w-[80rem] flex flex-row justify-between ">
+<div *ngIf="cartCount > 0"  class="m-auto  w-[80rem] flex flex-row justify-between ">
   <p class="font-bold">
     Related Products
   </p>
@@ -294,7 +296,7 @@
 </div>
 
 
-<div class="flex justify-evenly mb-5">
+<div *ngIf="cartCount > 0" class="flex justify-evenly mb-5">
   <nav aria-label="Page navigation example">
     <ul class="flex list-style-none">
       <li class="page-item"><a
